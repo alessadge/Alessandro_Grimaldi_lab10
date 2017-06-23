@@ -28,3 +28,6 @@ void Administrador::setSueldo(int sueldo){
 int Administrador::getSueldo(){
    return sueldo;
 }
+void Administrador::metodo(){
+	
+}

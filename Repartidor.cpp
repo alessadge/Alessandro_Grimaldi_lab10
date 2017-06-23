@@ -22,3 +22,11 @@ void Repartidor::setDinero(int dinero){
 int Repartidor::getDinero(){
    return dinero;
 }
+
+Baraja* Repartidor::getBaraja(){
+	return baraja;
+}
+
+void Repartidor::metodo(){
+	
+}

@@ -1,7 +1,7 @@
 #include "Baraja.h"
 
 Baraja::Baraja(){
-	Carta* carta;
+	Carta* carta=new Carta();
 	carta->setSimbolo("♥");
 	carta->setColor("Rojo");
 	for (int i = 1; i <= 13; ++i)

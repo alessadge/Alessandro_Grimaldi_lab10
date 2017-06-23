@@ -5,6 +5,7 @@ using namespace std;
 
 #ifndef ADMINISTRADOR_H
 #define ADMINISTRADOR_H
+
 class Administrador:public Persona{
     protected:
         int experiencia;
@@ -21,6 +22,7 @@ class Administrador:public Persona{
 
         int getSueldo();
         void setSueldo(int);
+        virtual void metodo();
 
 };
 #endif

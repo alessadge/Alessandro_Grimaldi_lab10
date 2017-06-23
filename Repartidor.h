@@ -14,11 +14,15 @@ class Repartidor:public Persona{
     public:
         Repartidor(string,int,int,string,int,Baraja*);
         Repartidor();
+
         string getDificultad();
         void setDificultad(string);
 
         int getDinero();
         void setDinero(int);
 
+        Baraja* getBaraja();
+
+        virtual void metodo();
 };
 #endif

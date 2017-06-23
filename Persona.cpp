@@ -1,6 +1,6 @@
 #include "Persona.h"
 
-Persona::Persona(string nombre,int edad,string numeroIdentidad){
+Persona::Persona(string nombre,int edad,int numeroIdentidad){
     this->nombre=nombre;
     this->edad=edad;
     this->numeroIdentidad=numeroIdentidad;
@@ -19,9 +19,12 @@ void Persona::setEdad(int edad){
 int Persona::getEdad(){
    return edad;
 }
-void Persona::setNumeroIdentidad(string numeroIdentidad){
+void Persona::setNumeroIdentidad(int numeroIdentidad){
    this-> numeroIdentidad=numeroIdentidad;
 }
-string Persona::getNumeroIdentidad(){
+int Persona::getNumeroIdentidad(){
    return numeroIdentidad;
+}
+void Persona::metodo(){
+	
 }

@@ -22,5 +22,7 @@ class Jugador:public Persona{
         int getDinero();
         void setDinero(int);
 
+        virtual void metodo();
+
 };
 #endif

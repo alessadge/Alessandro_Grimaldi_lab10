@@ -17,6 +17,7 @@ int main(){
     int opcion=0;
     vector<Mesa*> mesas; 
     vector<Persona*> personas;
+
     while (opcion != 5){
         cout<<"MENU PRINCIPAL"<<endl;
         cout<<"1.) LOGIN"<<endl;
@@ -26,14 +27,17 @@ int main(){
         cout<<"5.) Salir"<<endl;
         cin>>opcion;
         if(opcion==1){
-            string usuario, ID;
+            string usuario;
+            int ID1;
             cout<<"Ingrese su usuario: "<<endl;
             cin>>usuario;
             for (int i = 0; i < personas.size(); ++i)
             {
                 if(personas[i]->getNombre()==usuario){
-                    if(personas[i]->getNumeroIdentidad()==ID){
-                        if(typeid(personas[i])==typeid(Administrador)){
+                    cout<<"Ingrese su identidad:"<<endl;
+                    cin>>ID1;
+                    if(personas[i]->getNumeroIdentidad()==ID1){
+                        if(dynamic_cast<Administrador*>(personas[i])){
                             int vivo;
                             while(vivo!=4){
                             cout<<"MENU ADMIN"<<endl;
@@ -43,18 +47,18 @@ int main(){
                             cout<<"4.) Salir "<<endl;
                             cin>>vivo;
                             if(vivo==1){
-                                int verificacion;
+                                int verificacion=0;
                                 for (int i = 0; i < personas.size(); ++i)
                                 {
-                                    if(typeid(personas[i])==typeid(Jugador)){
+                                    if(typeid(*personas[i])==typeid(Jugador)){
                                         verificacion++;
                                     }
-                                    if(typeid(personas[i])==typeid(Repartidor)){
+                                    if(typeid(*personas[i])==typeid(Repartidor)){
                                         verificacion++;
                                     }
                                 }
 
-                                if(verificacion != 0){
+                                if(verificacion >= 2){
                                     string tipoMesa;
                                     int choice, pos;
                                     int numeroMesas;
@@ -180,13 +184,14 @@ int main(){
 
                            }//fin while
                         }//fin if typeid
-                        if(typeid(personas[i])==typeid(Jugador)){
+
+                        if(dynamic_cast<Jugador*>(personas[i])){
                             Jugador* raiz=reinterpret_cast<Jugador*>(personas[i]);
                             Mesa* mesaRaiz;
                             int acum=0;
                             for (int i = 0; i < mesas.size(); ++i)
                             {
-                                if(mesas[i]->getJugador()->getNumeroIdentidad==raiz->getNumeroIdentidad){
+                                if(mesas[i]->getJugador()->getNumeroIdentidad()==raiz->getNumeroIdentidad()){
                                     acum=1;
                                     mesaRaiz=mesas[i];
                                 }
@@ -194,19 +199,75 @@ int main(){
                             if(acum==1){
                                 cout<<"BIENVENIDO AL CASINO!"<<endl;
                                 //juego
-                                int apuesta;
-                                bool juego=true, apuesta=true;
-                                while(apuesta){
+                                int apuesta, valorJugador, valorRepartidor, random;
+                                bool juego=true, apuestaViva=true;
+                                while(apuestaViva){
                                     cout<<"Ingrese su apuesta: "<<endl;
                                     cin>>apuesta;
-                                    if(apuesta>=raiz->getDinero()){
-                                        raiz->setDinero(raiz->getDinero - apuesta);
-                                        apuesta=false;
+                                    if((raiz->getDinero()-apuesta)>=0){
+                                        raiz->setDinero(raiz->getDinero() - apuesta);
+                                        apuestaViva=false;
                                     }else{
                                         cout<<"No tiene suficiente dinero!";
                                     }
-                                }//fin apuesta;
+                                }//fin apuesta
+                                vector<Carta*> temp=mesaRaiz->getRepartidor()->getBaraja()->getCartas();
+                                random= rand()%1+52;
+                                cout<<random;
+                                //cartas Jugador
+                                cout<<"Sus cartas son: "<<endl;
+                                cout<<"Primera carta:"<<endl;
+                                cout<<"1.) Valor: "<<temp[random]->getValor()<<endl;
+                                cout<<"2.) Simbolo: "<<temp[random]->getSimbolo()<<endl;
+                                cout<<"3.) Color: "<<temp[random]->getColor()<<endl;
+                                valorJugador+=temp[random]->getValorInt();
+                                cout<<endl;
+                                random= rand()%1+52;
+                                cout<<"Segunda carta:"<<endl;
+                                cout<<"1.) Valor: "<<temp[random]->getValor()<<endl;
+                                cout<<"2.) Simbolo: "<<temp[random]->getSimbolo()<<endl;
+                                cout<<"3.) Color: "<<temp[random]->getColor()<<endl;
+                                valorJugador+=temp[random]->getValorInt();
+                                cout<<endl;
+                                random= rand()%1+52;
+                                cout<<"Carta del repartidor:"<<endl;
+                                cout<<"1.) Valor: "<<temp[random]->getValor()<<endl;
+                                cout<<"2.) Simbolo: "<<temp[random]->getSimbolo()<<endl;
+                                cout<<"3.) Color: "<<temp[random]->getColor()<<endl;
+                                valorRepartidor+=temp[random]->getValorInt();
+                                random= rand()%1+52;
+                                valorRepartidor+=temp[random]->getValorInt();
+                                int turno=1;
+                                while(valorRepartidor<21&&valorJugador<21){
+                                    if(turno=1){
+                                    int opcion1;
+                                    cout<<"Que desea hacer?"<<endl;
+                                    cout<<"1.) Pedir otra carta..."<<endl;
+                                    cin>>opcion1;
+                                        if(opcion1==1){
+                                            random= rand()%1+52;
+                                            valorJugador+=temp[random]->getValorInt();
+                                             cout<<"Su carta es:"<<endl;
+                                             cout<<"1.) Valor: "<<temp[random]->getValor()<<endl;
+                                             cout<<"2.) Simbolo: "<<temp[random]->getSimbolo()<<endl;
+                                             cout<<"3.) Color: "<<temp[random]->getColor()<<endl;
+                                        }
+                                    
+                                    }else{
+                                        cout<<"Turno repartidor"<<endl;
+                                        random= rand()%1+52;
+                                        valorRepartidor+=temp[random]->getValorInt();
+                                    }
 
+                                }
+                                if(valorJugador==21||valorRepartidor>21){
+                                    cout<<"Ha ganado! Tiene 21!"<<endl;
+                                    raiz->setDinero(raiz->getDinero()+(apuesta*2));
+
+                                }
+                                if(valorJugador>21||valorRepartidor==21){
+                                    cout<<"Usted ha perdido, gracias por jugar!"<<endl;
+                                }
                             }else{
                                 cout<<"USTED NO ESTA EN UNA MESA TODAVIA!"<<endl;
                             }
@@ -275,7 +336,7 @@ int main(){
             int numeroIdentidad;
             string dificultad;
             int dinero;
-            Baraja* baraja=new Baraja();
+            Baraja* baraja= new Baraja();
 
             cout<<"Ingrese nombre: "<<endl;
             cin>>nombre;
@@ -296,8 +357,11 @@ return 0;
 
 int agregarID(){
     int ID;
-    while(ID<999||ID>9999){
-        ID=rand() % 1000+9999;
+    cout<<"Ingrese un numero de identidad"<<endl;
+    cin>>ID;
+    while(ID<=999||ID>9999){
+        cout<<"Ingrese otro numero ej.0000"<<endl;
+        cin>>ID;
     }
     return ID;
 }

@@ -1,4 +1,6 @@
 #include "Carta.h"
+#include <stdio.h>
+#include <stdlib.h> 
 
 Carta::Carta(string valor,string simbolo,string color){
     this->valor=valor;
@@ -12,6 +14,25 @@ Carta::Carta(){
 }
 string Carta::getValor(){
    return valor;
+}
+int Carta::getValorInt(){
+   int valorInt;
+   if(valor=="A"){
+   	valorInt=1;
+   }else
+   if(valor=="J"){
+   		valorInt=11;
+   }else
+   if(valor=="Q"){
+   		valorInt=12;
+   }else
+   if(valor=="K"){
+   		valorInt=13;
+   }else{
+   		valorInt=atoi(valor.c_str());
+   }
+   
+   return valorInt;
 }
 void Carta::setSimbolo(string simbolo){
    this-> simbolo=simbolo;

@@ -9,18 +9,21 @@ class Persona{
     protected:
         string nombre;
         int edad;
-        string numeroIdentidad;
+        int numeroIdentidad;
     public:
-        Persona(string,int,string);
+        Persona(string,int,int);
         Persona();
+
         string getNombre();
         void setNombre(string);
 
         int getEdad();
         void setEdad(int);
 
-        string getNumeroIdentidad();
-        void setNumeroIdentidad(string);
+        int getNumeroIdentidad();
+        void setNumeroIdentidad(int);
+
+        virtual void metodo();
 
 };
 #endif

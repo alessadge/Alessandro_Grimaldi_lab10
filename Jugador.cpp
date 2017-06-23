@@ -28,3 +28,6 @@ void Jugador::setDinero(int dinero){
 int Jugador::getDinero(){
    return dinero;
 }
+void Jugador::metodo(){
+	
+}

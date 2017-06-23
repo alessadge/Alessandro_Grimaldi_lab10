@@ -14,6 +14,7 @@ class Carta{
         Carta(string,string,string);
         Carta();
         string getValor();
+        int getValorInt();
         void setValor(string);
 
         string getSimbolo();
@@ -23,4 +24,4 @@ class Carta{
         void setColor(string);
 
 };
-#endif
+#endif 
