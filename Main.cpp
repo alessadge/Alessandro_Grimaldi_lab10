@@ -212,7 +212,7 @@ int main(){
                                     }
                                 }//fin apuesta
                                 vector<Carta*> temp=mesaRaiz->getRepartidor()->getBaraja()->getCartas();
-                                random= rand()%1+52;
+                                random= rand()%51+1;
                                 cout<<random;
                                 //cartas Jugador
                                 cout<<"Sus cartas son: "<<endl;
@@ -222,20 +222,20 @@ int main(){
                                 cout<<"3.) Color: "<<temp[random]->getColor()<<endl;
                                 valorJugador+=temp[random]->getValorInt();
                                 cout<<endl;
-                                random= rand()%1+52;
+                                random= rand()%51+1;
                                 cout<<"Segunda carta:"<<endl;
                                 cout<<"1.) Valor: "<<temp[random]->getValor()<<endl;
                                 cout<<"2.) Simbolo: "<<temp[random]->getSimbolo()<<endl;
                                 cout<<"3.) Color: "<<temp[random]->getColor()<<endl;
                                 valorJugador+=temp[random]->getValorInt();
                                 cout<<endl;
-                                random= rand()%1+52;
+                                random= rand()%51+1;
                                 cout<<"Carta del repartidor:"<<endl;
                                 cout<<"1.) Valor: "<<temp[random]->getValor()<<endl;
                                 cout<<"2.) Simbolo: "<<temp[random]->getSimbolo()<<endl;
                                 cout<<"3.) Color: "<<temp[random]->getColor()<<endl;
                                 valorRepartidor+=temp[random]->getValorInt();
-                                random= rand()%1+52;
+                                random= rand()%51+1;
                                 valorRepartidor+=temp[random]->getValorInt();
                                 int turno=1;
                                 while(valorRepartidor<21&&valorJugador<21){
@@ -245,7 +245,7 @@ int main(){
                                     cout<<"1.) Pedir otra carta..."<<endl;
                                     cin>>opcion1;
                                         if(opcion1==1){
-                                            random= rand()%1+52;
+                                            random= rand()%51+1;
                                             valorJugador+=temp[random]->getValorInt();
                                              cout<<"Su carta es:"<<endl;
                                              cout<<"1.) Valor: "<<temp[random]->getValor()<<endl;
@@ -255,7 +255,7 @@ int main(){
                                     
                                     }else{
                                         cout<<"Turno repartidor"<<endl;
-                                        random= rand()%1+52;
+                                        random= rand()%51+1;
                                         valorRepartidor+=temp[random]->getValorInt();
                                     }
 
