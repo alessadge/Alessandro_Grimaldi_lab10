@@ -244,11 +244,11 @@ int main(){
                                     cout<<"Que desea hacer?"<<endl;
                                     cout<<"1.) Pedir otra carta..."<<endl;
                                     cin>>opcion1;
-                                    
+
                                         if(opcion1==1){
                                             random= rand()%51+1;
                                             valorJugador+=temp[random]->getValorInt();
-                                             cout<<"Su carta es:"<<endl;
+                                             cout<<"Su carta es:";
                                              cout<<"1.) Valor: "<<temp[random]->getValor()<<endl;
                                              cout<<"2.) Simbolo: "<<temp[random]->getSimbolo()<<endl;
                                              cout<<"3.) Color: "<<temp[random]->getColor()<<endl;
