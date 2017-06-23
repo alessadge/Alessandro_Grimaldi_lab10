@@ -244,6 +244,7 @@ int main(){
                                     cout<<"Que desea hacer?"<<endl;
                                     cout<<"1.) Pedir otra carta..."<<endl;
                                     cin>>opcion1;
+                                    
                                         if(opcion1==1){
                                             random= rand()%51+1;
                                             valorJugador+=temp[random]->getValorInt();
