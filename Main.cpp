@@ -212,7 +212,7 @@ int main(){
                                     }
                                 }//fin apuesta
                                 vector<Carta*> temp=mesaRaiz->getRepartidor()->getBaraja()->getCartas();
-                                random= rand()%51+1;
+                                random= rand()%52+1;
                                 cout<<random;
                                 //cartas Jugador
                                 cout<<"Sus cartas son: "<<endl;
@@ -222,14 +222,14 @@ int main(){
                                 cout<<"3.) Color: "<<temp[random]->getColor()<<endl;
                                 valorJugador+=temp[random]->getValorInt();
                                 cout<<endl;
-                                random= rand()%51+1;
+                                random= rand()%20+1;
                                 cout<<"Segunda carta:"<<endl;
                                 cout<<"1.) Valor: "<<temp[random]->getValor()<<endl;
                                 cout<<"2.) Simbolo: "<<temp[random]->getSimbolo()<<endl;
                                 cout<<"3.) Color: "<<temp[random]->getColor()<<endl;
                                 valorJugador+=temp[random]->getValorInt();
                                 cout<<endl;
-                                random= rand()%51+1;
+                                random= rand()%45+1;
                                 cout<<"Carta del repartidor:"<<endl;
                                 cout<<"1.) Valor: "<<temp[random]->getValor()<<endl;
                                 cout<<"2.) Simbolo: "<<temp[random]->getSimbolo()<<endl;
