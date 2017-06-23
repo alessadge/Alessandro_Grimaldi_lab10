@@ -10,9 +10,9 @@ class Repartidor:public Persona{
     protected:
         string dificultad;
         int dinero;
-        Baraja baraja;
+        Baraja* baraja;
     public:
-        Repartidor(string,int,int,string,int);
+        Repartidor(string,int,int,string,int,Baraja*);
         Repartidor();
         string getDificultad();
         void setDificultad(string);
