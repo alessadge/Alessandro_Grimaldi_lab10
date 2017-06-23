@@ -181,7 +181,35 @@ int main(){
                            }//fin while
                         }//fin if typeid
                         if(typeid(personas[i])==typeid(Jugador)){
+                            Jugador* raiz=reinterpret_cast<Jugador*>(personas[i]);
+                            Mesa* mesaRaiz;
+                            int acum=0;
+                            for (int i = 0; i < mesas.size(); ++i)
+                            {
+                                if(mesas[i]->getJugador()->getNumeroIdentidad==raiz->getNumeroIdentidad){
+                                    acum=1;
+                                    mesaRaiz=mesas[i];
+                                }
+                            }
+                            if(acum==1){
+                                cout<<"BIENVENIDO AL CASINO!"<<endl;
+                                //juego
+                                int apuesta;
+                                bool juego=true, apuesta=true;
+                                while(apuesta){
+                                    cout<<"Ingrese su apuesta: "<<endl;
+                                    cin>>apuesta;
+                                    if(apuesta>=raiz->getDinero()){
+                                        raiz->setDinero(raiz->getDinero - apuesta);
+                                        apuesta=false;
+                                    }else{
+                                        cout<<"No tiene suficiente dinero!";
+                                    }
+                                }//fin apuesta;
 
+                            }else{
+                                cout<<"USTED NO ESTA EN UNA MESA TODAVIA!"<<endl;
+                            }
                         }//fin if typeid2
                     }//fin if contra
                 }//fin if usuario
