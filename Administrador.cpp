@@ -1,9 +1,12 @@
 #include "Administrador.h"
 
-Administrador::Administrador(int experiencia,string rango,int sueldo){
+Administrador::Administrador(string nombre,int edad,int numeroIdentidad,int experiencia,string rango,int sueldo){
     this->experiencia=experiencia;
     this->rango=rango;
     this->sueldo=sueldo;
+    this->nombre=nombre;
+    this->edad=edad;
+    this->numeroIdentidad=numeroIdentidad;
 }
 Administrador::Administrador(){
 

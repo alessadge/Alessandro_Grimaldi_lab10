@@ -7,11 +7,14 @@
 #include "Repartidor.h"
 #include "Carta.h"
 #include "Jugador.h"
-#include "Mesa de Blackjack.h"
+#include "Mesa.h"
+
 using namespace std;
 int main(){
     int opcion=0;
-
+    Administrador admin;
+    admin.setNombre("Admin");
+    admin.setNumeroIdentidad("9999");
     while (opcion != 8){
         cout<<"MENU"<<endl;
         cout<<"1.) LOGIN"<<endl;

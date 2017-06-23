@@ -1,9 +1,12 @@
 #include "Jugador.h"
 
-Jugador::Jugador(string procedencia,string apodo,int dinero){
+Jugador::Jugador(string nombre,int edad,int numeroIdentidad,string procedencia,string apodo,int dinero){
     this->procedencia=procedencia;
     this->apodo=apodo;
     this->dinero=dinero;
+    this->nombre=nombre;
+    this->edad=edad;
+    this->numeroIdentidad=numeroIdentidad;
 }
 Jugador::Jugador(){
 
