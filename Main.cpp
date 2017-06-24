@@ -229,13 +229,13 @@ int main(){
                                 cout<<"3.) Color: "<<temp[random]->getColor()<<endl;
                                 valorJugador+=temp[random]->getValorInt();
                                 cout<<endl;
-                                random= rand()%45+1;
+                                random= rand()%15+1;
                                 cout<<"Carta del repartidor:"<<endl;
                                 cout<<"1.) Valor: "<<temp[random]->getValor()<<endl;
                                 cout<<"2.) Simbolo: "<<temp[random]->getSimbolo()<<endl;
                                 cout<<"3.) Color: "<<temp[random]->getColor()<<endl;
                                 valorRepartidor+=temp[random]->getValorInt();
-                                random= rand()%51+1;
+                                random= rand()%3+1;
                                 valorRepartidor+=temp[random]->getValorInt();
                                 int turno=1;
                                 while(valorRepartidor<21&&valorJugador<21){
@@ -244,9 +244,9 @@ int main(){
                                     cout<<"Que desea hacer?"<<endl;
                                     cout<<"1.) Pedir otra carta..."<<endl;
                                     cin>>opcion1;
-                                    
+
                                         if(opcion1==1){
-                                            random= rand()%51+1;
+                                            random= rand()%33+1;
                                             valorJugador+=temp[random]->getValorInt();
                                              cout<<"Su carta es:"<<endl;
                                              cout<<"1.) Valor: "<<temp[random]->getValor()<<endl;
@@ -256,7 +256,7 @@ int main(){
                                     
                                     }else{
                                         cout<<"Turno repartidor"<<endl;
-                                        random= rand()%51+1;
+                                        random= rand()%+1;
                                         valorRepartidor+=temp[random]->getValorInt();
                                     }
 
